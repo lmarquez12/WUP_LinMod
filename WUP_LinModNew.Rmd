@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Read about the data from the website where it is staged.  Then form three regression models; Model1 is SIMS~ARM, Model2 is SIMS~GRIP, and Model3 is SIMS~ARM+GRIP. For each model find a 95% prediction interval of SIMS given a value of 94  for GRIP and 88 for ARM. Compare Model1 with Model3 using anova. Write it up in a markdown document, push the project up to your github account and submit it back to canvas as link. 
 
- 
+This case study examines the relationship between isometric strength tests and job performance for 147 workers. 
 
 
 ```{r include=FALSE}
@@ -33,15 +33,38 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 
 ## Model 1 SIM~ARMS
 
+
+### Descriptive Results
+
 ### scatterplot
+
+```{r}
+plot(SIMS~ARM,data=data)
+```
+
+The scatter plot reflects that as the ARM strength score gets stronger the SIMS score gets higher.
 
 ### Numerical results
 
+```{r}
+cor(SIMS~ARM,data=data)
+```
+
+The correlation shows that the 
 
 ### Inferential  (Build model.1)
 
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+
 #### Predict at target point
 
+```{r}
+plot(SIMS~ARM,data=data)
+abline(model.1, col='red')
+```
 
 #### scatterplot with model fit
   
